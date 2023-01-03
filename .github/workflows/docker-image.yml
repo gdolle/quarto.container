@@ -37,6 +37,6 @@ jobs:
         with:
           context: .
           push: true
-          tags: ghrc.io/${{ github.repositor}}:test #${{ steps.base-meta.outputs.tags }}
+          tags: ghrc.io/${{ github.repository }}:test #${{ steps.base-meta.outputs.tags }}
           labels: quarto
           target: base
