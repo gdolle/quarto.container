@@ -37,6 +37,6 @@ jobs:
         with:
           context: .
           push: true
-          tags: ghcr.io/gdolle/quarto.containers:main #${{ steps.base-meta.outputs.tags }}
+          tags: ghcr.io/gdolle/quarto.containers:base #${{ steps.base-meta.outputs.tags }}
           label: ${{ steps.base-meta.outputs.labels }}
           target: base
