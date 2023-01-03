@@ -26,17 +26,17 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-      #- name: Extract metadata (tags, labels) for Docker
-      #  id: base-meta
-      #  uses: docker/metadata-action@v4
-      #  with:
-      #    images: ${{ env.REGISTRY }}/${{ github.repository }}
+      - name: Extract metadata (tags, labels) for Docker
+        id: base-meta
+        uses: docker/metadata-action@v4
+        with:
+          images: ${{ env.REGISTRY }}/${{ github.repository }}
 
       - name: Build and push Docker image
         uses: docker/build-push-action@v3
         with:
           context: .
           push: true
-          tags: ghrc.io/${{ github.repository }}
-          #label: ${{ steps.base-meta.outputs.labels }}
+          tags: ${{ steps.base-meta.outputs.tags }}
+          label: ${{ steps.base-meta.outputs.labels }}
           target: base
