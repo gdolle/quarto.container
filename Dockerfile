@@ -11,4 +11,5 @@ ENTRYPOINT ["quarto"]
 
 FROM base as full
 
-RUN apt -y install R python-is-python3 pandoc texlive-latex-recommended texlive-xetex texlive-luatex pandoc-citeproc texlive-latex-extra context wkhtmltopdf librsvg2-bin groff ghc nodejs php perl python ruby r-base-core libjs-mathjax libjs-katex citation-style-language-styles
+RUN apt -y install r-base r-cran-tidyverse jupyter python-is-python3 python3-numpy python3-matplotlib python3-plotly python3-scipy python3-sklearn python3-skimage pandoc texlive-latex-recommended texlive-xetex texlive-luatex pandoc-citeproc texlive-latex-extra context wkhtmltopdf librsvg2-bin groff ghc nodejs php perl ruby r-base-core libjs-mathjax citation-style-language-styles
+#libjs-katex
