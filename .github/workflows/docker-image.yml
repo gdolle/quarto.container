@@ -7,12 +7,9 @@ on:
     branches: [ "main" ]
 
 jobs:
-
-  build:
-
+  quarto-base:
     runs-on: ubuntu-latest
-
     steps:
     - uses: actions/checkout@v3
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag quarto:minimal
+      run: docker build . --file Dockerfile --tag quarto:base --target base

@@ -1,7 +1,9 @@
 FROM ubuntu:20.04 as base
 
 ENV QUARTO_VERSION "1.2.280"
+ENV TZ=Europe/Paris
 
+RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 RUN apt -y update
 RUN apt -y install curl
 RUN curl -sL "https://github.com/quarto-dev/quarto-cli/releases/download/v${QUARTO_VERSION}/quarto-${QUARTO_VERSION}-linux-amd64.deb" -o quarto.deb
