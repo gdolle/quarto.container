@@ -10,7 +10,7 @@ env:
   REGISTRY: ghcr.io
 
 jobs:
-  docker-quarto-base:
+  quarto-base:
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -37,6 +37,6 @@ jobs:
         with:
           context: .
           push: true
-          tags: ${{ steps.base-meta.outputs.tags }}
+          tags: ghcr.io/gdolle/quarto.containers:main #${{ steps.base-meta.outputs.tags }}
           label: ${{ steps.base-meta.outputs.labels }}
           target: base
