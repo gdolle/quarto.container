@@ -37,5 +37,5 @@ jobs:
         with:
           context: .
           push: true
-          tags: ghrc.io/${{ github.repository }}:test #${{ steps.base-meta.outputs.tags }}
+          tags: ghrc.io/${{ github.repository }}/quarto:test #${{ steps.base-meta.outputs.tags }}
           target: base
