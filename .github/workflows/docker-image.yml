@@ -11,7 +11,7 @@ env:
   IMAGE_NAME: ${{ github.repository }}
 
 jobs:
-  quarto-base:
+  docker-quarto-base:
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -38,6 +38,6 @@ jobs:
         with:
           context: .
           push: true
-          tags: ${{ steps.base-meta.outputs.tags }}
+          tags: quarto:base
           labels: ${{ steps.base-meta.outputs.labels }}
           target: base
