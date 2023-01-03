@@ -8,7 +8,6 @@ on:
 
 env:
   REGISTRY: ghcr.io
-  IMAGE_NAME: ${{ github.repository }}
 
 jobs:
   docker-quarto-base:
@@ -31,13 +30,13 @@ jobs:
         id: base-meta
         uses: docker/metadata-action@v4
         with:
-          images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+          images: ${{ env.REGISTRY }}/${{ github.repository }}/quarto:base
 
       - name: Build and push Docker image
         uses: docker/build-push-action@v3
         with:
           context: .
           push: true
-          tags: quarto:base
+          tags: ${{ steps.base-meta.outputs.tags }}
           labels: ${{ steps.base-meta.outputs.labels }}
           target: base
