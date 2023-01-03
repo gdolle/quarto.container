@@ -26,17 +26,17 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Extract metadata (tags, labels) for Docker
-        id: base-meta
-        uses: docker/metadata-action@v4
-        with:
-          images: ${{ env.REGISTRY }}/${{ github.repository }}
+      #- name: Extract metadata (tags, labels) for Docker
+      #  id: base-meta
+      #  uses: docker/metadata-action@v4
+      #  with:
+      #    images: ${{ env.REGISTRY }}/${{ github.repository }}
 
       - name: Build and push Docker image
         uses: docker/build-push-action@v3
         with:
           context: .
           push: true
-          tags: quarto #${{ steps.base-meta.outputs.tags }}
-          labels: quarto #${{ steps.base-meta.outputs.labels }}
+          tags: ghrc.io/${{ github.repositor}}:test #${{ steps.base-meta.outputs.tags }}
+          labels: quarto
           target: base
