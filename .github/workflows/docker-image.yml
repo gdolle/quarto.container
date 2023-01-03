@@ -30,13 +30,13 @@ jobs:
         id: base-meta
         uses: docker/metadata-action@v4
         with:
-          images: ${{ env.REGISTRY }}/${{ github.repository }}/quarto:base
+          images: ${{ env.REGISTRY }}/${{ github.repository }}
 
       - name: Build and push Docker image
         uses: docker/build-push-action@v3
         with:
           context: .
           push: true
-          tags: ${{ steps.base-meta.outputs.tags }}
-          labels: ${{ steps.base-meta.outputs.labels }}
+          tags: quarto #${{ steps.base-meta.outputs.tags }}
+          labels: quarto #${{ steps.base-meta.outputs.labels }}
           target: base
