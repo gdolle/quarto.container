@@ -14,7 +14,7 @@ inputs:
     description: "registry password"
     required: true
     default: ""
-  tag:
+  tags:
     description: "image tag"
     required: true
     default: ""
@@ -48,7 +48,8 @@ runs:
       with:
         context: .
         push: true
-        tags: ${{ inputs.registry }}/${{ github.repository_owner }}/${{ inputs.tag }}
+        tags: |
+          ${{ inputs.registry }}/${{ github.repository_owner }}/${{ inputs.tags }}
         label: ${{ steps.base-meta.outputs.labels }}
         target: ${{ inputs.target }}
 
