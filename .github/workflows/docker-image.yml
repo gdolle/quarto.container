@@ -18,7 +18,9 @@ jobs:
         with:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
-          tags: ["quarto:${{github.ref_name}}-base", "latest-base"]
+          tags: |
+            quarto:${{github.ref_name}}-base
+            latest-base
           target: base
   quarto-full:
     runs-on: ubuntu-latest
