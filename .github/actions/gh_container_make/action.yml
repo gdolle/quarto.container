@@ -48,7 +48,8 @@ runs:
       with:
         context: .
         push: true
-        tags: ${{ join(${{ inputs.registry }}/${{ github.repository_owner }}/${{ inputs.tags }}) }}
+        #tags: ${{ inputs.registry }}/${{ github.repository_owner }}/${{ inputs.tags }}
+        tags: ${{ format('{0}/{1}/{2}'), inputs.registry, github.repository_owner, inputs.tags }}
         label: ${{ steps.base-meta.outputs.labels }}
         target: ${{ inputs.target }}
 
