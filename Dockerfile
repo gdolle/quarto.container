@@ -8,6 +8,7 @@ RUN apt -y update
 RUN apt -y install curl
 RUN curl -sL "https://github.com/quarto-dev/quarto-cli/releases/download/v${QUARTO_VERSION}/quarto-${QUARTO_VERSION}-linux-amd64.deb" -o quarto.deb
 RUN apt -y install ./quarto.deb
+RUN quarto install tinytex
 
 ENTRYPOINT ["quarto"]
 
