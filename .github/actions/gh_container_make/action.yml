@@ -9,9 +9,11 @@ inputs:
   username:
     description: "registry username"
     required: true
+    default: ""
   password:
     description: "registry password"
     required: true
+    default: ""
   tag:
     description: "image tag"
     required: true
