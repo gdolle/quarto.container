@@ -1,0 +1,38 @@
+name: "gh_container_make"
+description: "Simple build or push container from docker file"
+
+inputs:
+  tag:
+    description: "default tag"
+    required: true
+    default: ""
+  target:
+    description: "precise target"
+    required: false
+    default: ""
+
+runs:
+  using: "composite"
+  steps:
+    - name: Log in to the Container registry
+      uses: docker/login-action@v2
+      with:
+        registry: ${{ env.REGISTRY }}
+        username: ${{ github.actor }}
+        password: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Extract metadata (tags, labels) for Docker
+      id: base-meta
+      uses: docker/metadata-action@v4
+      with:
+        images: ${{ env.REGISTRY }}/${{ github.repository }}
+
+    - name: Build and push quarto base image
+      uses: docker/build-push-action@v3
+      with:
+        context: .
+        push: true
+        tags: ${{ env.REGISTRY }}/${{ github.repository_owner }}/${{ inputs.tag }}
+        label: ${{ steps.base-meta.outputs.labels }}
+        target: ${{ inputs.target }}
+
