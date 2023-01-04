@@ -48,7 +48,7 @@ runs:
       with:
         context: .
         push: true
-        tags: ${{ env.REGISTRY }}/${{ github.repository_owner }}/${{ inputs.tag }}
+        tags: ${{ inputs.registry }}/${{ github.repository_owner }}/${{ inputs.tag }}
         label: ${{ steps.base-meta.outputs.labels }}
         target: ${{ inputs.target }}
 
