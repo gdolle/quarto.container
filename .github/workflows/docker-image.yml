@@ -20,31 +20,7 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Log in to the Container registry
-        uses: docker/login-action@v2
+        uses: actions/gh_container_make
         with:
-          registry: ${{ env.REGISTRY }}
-          username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Extract metadata (tags, labels) for Docker
-        id: base-meta
-        uses: docker/metadata-action@v4
-        with:
-          images: ${{ env.REGISTRY }}/${{ github.repository }}
-
-      - name: Build and push quarto base image
-        uses: docker/build-push-action@v3
-        with:
-          context: .
-          push: true
-          tags: ${{ env.REGISTRY }}/${{ github.repository_owner }}/quarto:base
-          label: ${{ steps.base-meta.outputs.labels }}
+          tag: quarto:base
           target: base
-
-            #      - name: Build and push quarto full image
-            #        uses: docker/build-push-action@v3
-            #        with:
-            #          context: .
-            #          push: true
-            #          tags: ghcr.io/gdolle/quarto:base #${{ steps.base-meta.outputs.tags }}
-            #          label: ${{ steps.base-meta.outputs.labels }}
