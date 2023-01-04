@@ -25,18 +25,18 @@ jobs:
             ${{ env.registry }}/${{ github.repository_owner }}/quarto:base-${{github.ref_name}}
             ${{ env.registry }}/${{ github.repository_owner }}/quarto:base-latest
           target: base
-  quarto-full:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
-
-      - name: Log in to the Container registry
-        uses: ./.github/actions/gh_container_make
-        with:
-          username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
-          tags: |
-            ${{ env.registry }}/${{ github.repository_owner }}/quarto:full-${{github.ref_name}}
-            ${{ env.registry }}/${{ github.repository_owner }}/quarto:full-latest
-          target: full
+#  quarto-full:
+#    runs-on: ubuntu-latest
+#    steps:
+#      - name: Checkout repository
+#        uses: actions/checkout@v3
+#
+#      - name: Log in to the Container registry
+#        uses: ./.github/actions/gh_container_make
+#        with:
+#          username: ${{ github.actor }}
+#          password: ${{ secrets.GITHUB_TOKEN }}
+#          tags: |
+#            ${{ env.registry }}/${{ github.repository_owner }}/quarto:full-${{github.ref_name}}
+#            ${{ env.registry }}/${{ github.repository_owner }}/quarto:full-latest
+#          target: full
