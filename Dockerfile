@@ -1,6 +1,6 @@
 FROM ubuntu:20.04 as base
 
-ENV QUARTO_VERSION=1.2.280
+ENV QUARTO_VERSION=1.2.313
 ENV TZ=Europe/Paris
 
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
