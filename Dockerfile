@@ -4,6 +4,7 @@ ENV QUARTO_VERSION=1.4.146
 ENV TZ=Europe/Paris
 
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
+RUN "LANG=en_US.UTF-8" > /etc/default/locale
 RUN apt -y update
 RUN apt -y install curl \
                    libfontconfig
@@ -40,7 +41,9 @@ RUN apt -y install \
            ruby \
            r-base-core \
            libjs-mathjax \
-           citation-style-language-styles
+           citation-style-language-styles \
+           language-pack-en-base
+           
 
 RUN quarto check
 #libjs-katex
