@@ -2,9 +2,9 @@ FROM ubuntu:22.04 as base
 
 ENV QUARTO_VERSION=1.4.151
 ENV TZ=Europe/Paris
+ENV LANG=en_US.UTF-8
 
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
-RUN echo "LANG=en_US.UTF-8" > /etc/default/locale
 RUN apt -y update
 RUN apt -y install curl \
                    libfontconfig
