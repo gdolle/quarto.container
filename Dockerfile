@@ -1,6 +1,6 @@
 FROM ubuntu:22.04 as base
 
-ENV QUARTO_VERSION=1.4.146
+ENV QUARTO_VERSION=1.4.151
 ENV TZ=Europe/Paris
 
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
