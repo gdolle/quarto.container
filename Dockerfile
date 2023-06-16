@@ -4,7 +4,7 @@ ENV QUARTO_VERSION=1.4.146
 ENV TZ=Europe/Paris
 
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
-RUN "LANG=en_US.UTF-8" > /etc/default/locale
+RUN cat "LANG=en_US.UTF-8" > /etc/default/locale
 RUN apt -y update
 RUN apt -y install curl \
                    libfontconfig
